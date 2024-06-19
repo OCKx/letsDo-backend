@@ -14,7 +14,8 @@
   },
   "include": [
     "src/**/*.ts",
-    "prisma/prisma.ts"
+    "prisma/prisma.ts",
+    "src/docs/index.js"
   ],
   "exclude": ["node_modules"]
 }

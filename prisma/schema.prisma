@@ -28,6 +28,7 @@ model User {
   password     String
   date_created DateTime @default(now())
   tasks        Task[]
+  otp          OTP[]
 }
 
 model Task {
@@ -57,4 +58,13 @@ model Reminder {
   date       DateTime
   message    String
   task       Task[]
+}
+
+model OTP {
+  otpID     Int      @id @default(autoincrement())
+  User      User?    @relation(fields: [userID], references: [userID])
+  userID    Int?
+  otp       String   @db.VarChar(6)
+  createdAt DateTime @default(now())
+  expiredAt DateTime
 }
