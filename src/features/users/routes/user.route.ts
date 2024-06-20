@@ -15,7 +15,7 @@ userRouter.get("/", userValidation, getUser);
 userRouter.post("/login", loginValidation, login);
 userRouter.post("/register",registerValidation, registerUser);
 userRouter.post("/logout", logout);
-userRouter.post("/update", updateValidation, updateUser);
+userRouter.put("/update", updateValidation, updateUser);
 
 
 export default userRouter;

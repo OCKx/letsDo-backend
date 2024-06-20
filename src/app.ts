@@ -1,11 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import swaggerUi from "swagger-ui-express";
+import dotenv from "dotenv";
 import { errorHandler, notFound } from './middlewares/errors';
 import router from './routes/index';
 import './utilss/scheduler';
 
+dotenv.config();
 const app = express();
 
 app.use(cors());
