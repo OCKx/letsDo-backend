@@ -1,16 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
 import joi from 'joi';
 
-const userSchema = joi.object({
-    email: joi.string().email().optional().messages({
+const forgotPasswordSchema = joi.object({
+    email: joi.string().email().required().messages({
         "string.empty": "A valid email is required",
         "string.email": "A valid email is required",
     })
 })
 
-const userValidation = async(req: Request, res: Response, next: NextFunction) => {
+const forgotPasswordValidation = async(req: Request, res: Response, next: NextFunction) => {
     try {
-        await userSchema.validateAsync(req.query);
+        await forgotPasswordSchema.validateAsync(req.body);
         next()
     } catch (error) {
         if(error instanceof Error) {
@@ -20,4 +20,4 @@ const userValidation = async(req: Request, res: Response, next: NextFunction) =>
 }
 
 
-export default userValidation;
+export default forgotPasswordValidation;
