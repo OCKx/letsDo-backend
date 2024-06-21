@@ -1,5 +1,19 @@
+# Node modules
 node_modules/
-# Keep environment variables out of version control
+
+# Dist directory
+dist/
+
+# Environment variables
 .env
 
-dist/
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Optional: Ignore any OS-specific files
+.DS_Store
+
+# Ignore build artifacts
+build/

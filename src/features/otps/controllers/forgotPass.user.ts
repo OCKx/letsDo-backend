@@ -1,4 +1,6 @@
 import { Request, Response, NextFunction } from "express";
+import fs from "fs";
+import path from "path";
 import prisma from "../../../../prisma/prisma";
 import generateOTP from "../../../utilss/generateOTP";
 import transporter from "../../../utilss/mailTransporter";
@@ -25,11 +27,15 @@ const forgotPaaaword = wrapper(async (req: Request, res: Response, next: NextFun
             }
         })
 
+        const templatePath = path.join(process.env.STATIC_FILES_PATH!, 'otp-mail/index.html');
+        let otpTemplate = fs.readFileSync(templatePath, 'utf-8');
+        otpTemplate = otpTemplate.replace('{{OTP}}', otp);
+
         const mailOption = {
             from: process.env.EMAIL_USER,
             to: email,
             subject: "Forgot Password Verification",
-            text: `your OTP is ${otp}`
+            html: otpTemplate
         }
 
         await transporter.sendMail(mailOption);
