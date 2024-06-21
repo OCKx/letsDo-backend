@@ -15,9 +15,11 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.html",
     "src/**/*.json",
     "prisma/prisma.ts",
-    "src/docs/index.js"
+    "src/docs/index.js",
+    "env.d.ts"
   ],
   "exclude": ["node_modules"]
 }

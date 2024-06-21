@@ -27,7 +27,7 @@ const forgotPaaaword = wrapper(async (req: Request, res: Response, next: NextFun
             }
         })
 
-        const templatePath = path.join(__dirname, '../../../statics/otp-mail/index.html');
+        const templatePath = path.join(process.env.STATIC_FILES_PATH!, 'otp-mail/index.html');
         let otpTemplate = fs.readFileSync(templatePath, 'utf-8');
         otpTemplate = otpTemplate.replace('{{OTP}}', otp);
 
