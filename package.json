@@ -7,7 +7,7 @@
     "start": "ts-node src/index.ts",
     "dev": "nodemon src/index.ts",
     "build": "tsc && prisma generate --schema=./prisma/schema.prisma",
-    "start:dist": "node dist/src/index.js",
+    "start:dist": "node ./dist/src/index.js",
     "typecheck": "tsc --noEmit",
     "swagger": "node ./src/docs/index.mjs"
   },
