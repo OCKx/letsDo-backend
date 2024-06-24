@@ -6,184 +6,133 @@
     "version": "1.0.0"
   },
   "basePath": "/",
-  "schemes": ["http", "https"],
+  "schemes": [
+    "http"
+  ],
   "paths": {
     "/api/v1/user/": {
       "get": {
-        "tags": ["User"],
-        "summary": "Get user",
+        "description": "",
         "responses": {
-          "200": {
-            "description": "Successful operation"
-          },
-          "404": {
-            "description": "User not found"
+          "default": {
+            "description": ""
           }
         }
       }
     },
     "/api/v1/user/login": {
       "post": {
-        "tags": ["User"],
-        "summary": "User login",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
-          }
-        ],
+        "description": "",
         "responses": {
-          "200": {
-            "description": "Successful login"
-          },
-          "400": {
-            "description": "Invalid credentials"
+          "default": {
+            "description": ""
           }
         }
       }
     },
     "/api/v1/user/register": {
       "post": {
-        "tags": ["User"],
-        "summary": "User registration",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
-          }
-        ],
+        "description": "",
         "responses": {
-          "201": {
-            "description": "User registered successfully"
-          },
-          "400": {
-            "description": "Invalid data"
+          "default": {
+            "description": ""
           }
         }
       }
     },
     "/api/v1/user/logout": {
       "post": {
-        "tags": ["User"],
-        "summary": "User logout",
+        "description": "",
         "responses": {
-          "200": {
-            "description": "Successful logout"
+          "default": {
+            "description": ""
           }
         }
       }
     },
     "/api/v1/user/update": {
       "put": {
-        "tags": ["User"],
-        "summary": "Update user details",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
-          }
-        ],
+        "description": "",
         "responses": {
-          "200": {
-            "description": "User updated successfully"
-          },
-          "400": {
-            "description": "Invalid data"
+          "default": {
+            "description": ""
           }
         }
       }
     },
     "/api/v1/otp/forgot-password": {
       "post": {
-        "tags": ["OTP"],
-        "summary": "Forgot password",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/OTP"
-            }
-          }
-        ],
+        "description": "",
         "responses": {
-          "200": {
-            "description": "OTP sent successfully"
-          },
-          "400": {
-            "description": "Invalid email"
+          "default": {
+            "description": ""
           }
         }
       }
     },
     "/api/v1/otp/verify-otp": {
       "post": {
-        "tags": ["OTP"],
-        "summary": "Verify OTP",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/OTP"
-            }
-          }
-        ],
+        "description": "",
         "responses": {
-          "200": {
-            "description": "OTP verified successfully"
-          },
-          "400": {
-            "description": "Invalid or expired OTP"
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/task/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/task/create": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/task/update": {
+      "put": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/task/delete": {
+      "delete": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/task/search-by-status": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }
     }
   },
-  "definitions": {
-    "User": {
-      "type": "object",
-      "properties": {
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        }
-      },
-      "required": ["firstName", "lastName", "email", "password"]
-    },
-    "OTP": {
-      "type": "object",
-      "properties": {
-        "email": {
-          "type": "string"
-        },
-        "otp": {
-          "type": "string"
-        }
-      },
-      "required": ["email", "otp"]
-    }
-  }
+  "schema": [
+    "http",
+    "https"
+  ]
 }

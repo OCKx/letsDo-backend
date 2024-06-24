@@ -7,7 +7,6 @@ declare namespace NodeJS {
       DATABASE_URL: string;
       JWT_SECRET_KEY: string;
       EMAIL_PASS: string
-      // Add other environment variables here
     }
   }
   
