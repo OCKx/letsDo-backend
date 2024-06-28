@@ -15,12 +15,12 @@ CREATE TABLE `User` (
 CREATE TABLE `Task` (
     `taskID` INTEGER NOT NULL AUTO_INCREMENT,
     `userID` INTEGER NOT NULL,
-    `reminderID` INTEGER NULL,
     `taskName` VARCHAR(100) NOT NULL,
     `description` VARCHAR(191) NULL,
     `status` ENUM('pending', 'started', 'done', 'uncompleted') NOT NULL DEFAULT 'pending',
     `date_created` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `due_date` DATETIME(3) NOT NULL,
+    `reminderDate` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`taskID`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -36,15 +36,6 @@ CREATE TABLE `SubTask` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Reminder` (
-    `reminderID` INTEGER NOT NULL AUTO_INCREMENT,
-    `date` DATETIME(3) NOT NULL,
-    `message` VARCHAR(191) NOT NULL,
-
-    PRIMARY KEY (`reminderID`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
 CREATE TABLE `OTP` (
     `otpID` INTEGER NOT NULL AUTO_INCREMENT,
     `userID` INTEGER NULL,
@@ -57,9 +48,6 @@ CREATE TABLE `OTP` (
 
 -- AddForeignKey
 ALTER TABLE `Task` ADD CONSTRAINT `Task_userID_fkey` FOREIGN KEY (`userID`) REFERENCES `User`(`userID`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Task` ADD CONSTRAINT `Task_reminderID_fkey` FOREIGN KEY (`reminderID`) REFERENCES `Reminder`(`reminderID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `SubTask` ADD CONSTRAINT `SubTask_taskID_fkey` FOREIGN KEY (`taskID`) REFERENCES `Task`(`taskID`) ON DELETE RESTRICT ON UPDATE CASCADE;
