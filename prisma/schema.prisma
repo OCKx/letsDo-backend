@@ -35,13 +35,12 @@ model Task {
   taskID       Int       @id @default(autoincrement())
   userID       Int
   user         User      @relation(fields: [userID], references: [userID])
-  reminderID   Int?
-  reminder     Reminder? @relation(fields: [reminderID], references: [reminderID])
   taskName     String    @db.VarChar(100)
   description  String?
   status       Status    @default(pending)
   date_created DateTime  @default(now())
   due_date     DateTime
+  reminderDate DateTime
   subTasks     SubTask[]
 }
 
@@ -51,13 +50,6 @@ model SubTask {
   task        Task    @relation(fields: [taskID], references: [taskID])
   name        String  @db.VarChar(100)
   description String?
-}
-
-model Reminder {
-  reminderID Int      @id @default(autoincrement())
-  date       DateTime
-  message    String
-  task       Task[]
 }
 
 model OTP {

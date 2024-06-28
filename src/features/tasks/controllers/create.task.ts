@@ -3,7 +3,7 @@ import prisma from "../../../../prisma/prisma";
 import wrapper from "../../../middlewares/asyncWrapper";
 
 const createTask = wrapper(async (req: Request, res: Response, next: NextFunction) => {
-    const { userID, reminderID, taskName, description, due_date } = req.body;
+    const { userID, taskName, description, due_date, reminderDate } = req.body;
 
     try {
         const dueDateTime = new Date(due_date);
@@ -13,14 +13,37 @@ const createTask = wrapper(async (req: Request, res: Response, next: NextFunctio
                 message: "Invalid due date format. Please use 'YYYY-MM-DD' or 'YYYY-MM-DDTHH:MM:SSZ'."
             });
         }
+        
+
+        let reminderDateTime: Date;
+        if (reminderDate) {
+            reminderDateTime = new Date(reminderDate);
+            if (isNaN(reminderDateTime.getTime())) {
+                return res.status(400).send({
+                    status: "FAIL",
+                    message: "Invalid reminder date format. Please use 'YYYY-MM-DD' or 'YYYY-MM-DDTHH:MM:SSZ'."
+                });
+            }
+
+            if (reminderDateTime >= dueDateTime) {
+                return res.status(400).send({
+                    status: 'FAIL',
+                    message: "Reminder date cannot be equal or greater than due date"
+                })
+            }
+        }
+        else {
+            reminderDateTime = new Date(due_date);
+            reminderDateTime.setDate(reminderDateTime.getDate() - 1);
+        }
 
         await prisma.task.create({
             data: {
                 userID,
-                reminderID,
                 taskName,
                 description,
-                due_date: dueDateTime
+                due_date: dueDateTime,
+                reminderDate: reminderDateTime
             }
         });
 
