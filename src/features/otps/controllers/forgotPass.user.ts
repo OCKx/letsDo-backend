@@ -10,7 +10,7 @@ const forgotPaaaword = wrapper(async (req: Request, res: Response, next: NextFun
     const { email } = req.body;
 
     try {
-        const user = await prisma.user.findFirst({ where: { email }});
+        const user = await prisma.user.findFirst({ where: { email: email }});
 
         if (!user) {
             return res.status(404).json({ error: "user not found" })

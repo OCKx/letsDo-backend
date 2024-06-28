@@ -23,6 +23,9 @@ const updateTaskSchema = joi.object({
         "date.base": "Due date must be a valid date",
         "date.empty": "Due date is optional",
         "date.optional": "Due date is optional",
+    }),
+    reminderDate: joi.date().iso().optional().messages({
+        "number.empty": "reminderDate is required",
     })
 });
 

@@ -7,22 +7,20 @@ const createTaskSchema = joi.object({
         "number.empty": "userID is required",
         "number.required": "userID is required",
     }),
-    reminderID: joi.number().optional().messages({
-        "number.empty": "reminderID is required",
-        "number.optional": "reminderID is required",
-    }),
     taskName: joi.string().required().messages({
         "string.empty": "Task name is required",
         "string.required": "Task name is required",
     }),
     description: joi.string().optional().messages({
         "string.empty": "Description is required",
-        "string.required": "Description is required",
     }),
     due_date: joi.date().iso().required().messages({
         "date.base": "Due date must be a valid date",
         "date.empty": "Due date is required",
         "date.required": "Due date is required",
+    }),
+    reminderDate: joi.date().iso().optional().messages({
+        "number.empty": "reminderDate is required",
     })
 });
 
