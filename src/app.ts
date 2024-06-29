@@ -9,6 +9,7 @@ import router from './routes/index';
 import './scheduler/scheduler.deleteOtp';
 import './scheduler/scheduler.updateTaskStatus';
 import './scheduler/scheduler.sendReminder';
+import './scheduler/scheduler.completedSubTask';
 
 dotenv.config();
 const app = express();
