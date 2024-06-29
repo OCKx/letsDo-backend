@@ -6,7 +6,9 @@ import compression from 'compression';
 import dotenv from "dotenv";
 import { errorHandler, notFound } from './middlewares/errors';
 import router from './routes/index';
-import './utilss/scheduler';
+import './scheduler/scheduler.deleteOtp';
+import './scheduler/scheduler.updateTaskStatus';
+import './scheduler/scheduler.sendReminder';
 
 dotenv.config();
 const app = express();

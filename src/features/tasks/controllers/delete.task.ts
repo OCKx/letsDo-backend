@@ -10,12 +10,12 @@ const deleteTask = wrapper(async (req: Request, res: Response, next: NextFunctio
             return res.status(400).json({ error: "taskID is required"});
         }
 
-        const task = await prisma.task.findUnique({ where: { taskID: Number(taskID) } });
+        const task = await prisma.task.findUnique({ where: { taskID } });
         if (!task) {
             return res.status(400).json({ error: "Task not found" })
         }
 
-        await prisma.task.delete({ where: { taskID: Number(taskID) } });
+        await prisma.task.delete({ where: { taskID } });
         return res.status(200).json({ message: "Task has been successfully deleted" })
     }
     catch (error) {

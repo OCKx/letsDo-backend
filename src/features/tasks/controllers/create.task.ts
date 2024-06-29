@@ -6,6 +6,15 @@ const createTask = wrapper(async (req: Request, res: Response, next: NextFunctio
     const { userID, taskName, description, due_date, reminderDate } = req.body;
 
     try {
+        if (!userID) {
+            return res.status(400).json({ error: "userID is required" });
+        }
+
+        const getUser = await prisma.user.findUnique({ where: { userID } });
+        if (!getUser) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
         const dueDateTime = new Date(due_date);
         if (isNaN(dueDateTime.getTime())) {
             return res.status(400).send({

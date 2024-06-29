@@ -11,7 +11,8 @@ const deleteExpiredOtps = async () => {
       },
     });
     console.log('Expired OTPs deleted successfully');
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Error deleting expired OTPs:', error);
   }
 };
