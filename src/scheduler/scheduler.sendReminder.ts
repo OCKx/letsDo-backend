@@ -46,7 +46,7 @@ const sendReminder = async () => {
     }
 };
 
-cron.schedule('0 0 * * *', sendReminder);
+cron.schedule('0 9 * * *', sendReminder);
 
 
 export default sendReminder;
