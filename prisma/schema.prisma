@@ -48,8 +48,9 @@ model SubTask {
   subTaskID   Int     @id @default(autoincrement())
   taskID      Int
   task        Task    @relation(fields: [taskID], references: [taskID])
-  name        String  @db.VarChar(100)
+  subTaskName String  @db.VarChar(100)
   description String?
+  completed   Boolean @default(false)
 }
 
 model OTP {

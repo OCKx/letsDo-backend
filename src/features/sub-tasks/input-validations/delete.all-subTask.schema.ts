@@ -1,16 +1,16 @@
 import { Request,Response, NextFunction } from "express";
 import joi from "joi";
 
-const deleteTaskSchema = joi.object({
+const deleteAllSubTaskSchema = joi.object({
     taskID: joi.number().required().messages({
         "number.empty": "taskID is required",
         "number.required": "taskID is required"
     })
 });
 
-const deleteTaskValidation = async(req: Request, res: Response, next: NextFunction) => {
+const deleteAllSubTaskValidation = async(req: Request, res: Response, next: NextFunction) => {
     try {
-        await deleteTaskSchema.validateAsync(req.body);
+        await deleteAllSubTaskSchema.validateAsync(req.body);
         next();
     }
     catch (error) {
@@ -21,4 +21,4 @@ const deleteTaskValidation = async(req: Request, res: Response, next: NextFuncti
 }
 
 
-export default deleteTaskValidation;
+export default deleteAllSubTaskValidation;
