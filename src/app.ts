@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import helmet from "helmet";
 import compression from 'compression';
 import dotenv from "dotenv";
-import { errorHandler, notFound } from './middlewares/errors';
+import { errorHandler, notFound } from './middlewares/errors'; 
 import router from './routes/index';
 import './scheduler/scheduler.deleteOtp';
 import './scheduler/scheduler.updateTaskStatus';
@@ -14,7 +14,9 @@ import './scheduler/scheduler.completedSubTask';
 dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(router);

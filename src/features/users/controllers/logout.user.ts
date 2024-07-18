@@ -2,10 +2,9 @@ import { Request, Response, NextFunction } from "express";
 import wrapper from "../../../middlewares/asyncWrapper";
 
 const logout = wrapper(async (req: Request, res: Response, next: NextFunction) => {
-    res.cookie('user', 'loggedout',  {
-        expires: new Date(Date.now() + 10 * 1000),
-        httpOnly: false,
-        secure: true,
+    res.cookie('token',  {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
         sameSite: "none"
     });
     

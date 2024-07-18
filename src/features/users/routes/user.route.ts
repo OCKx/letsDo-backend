@@ -1,6 +1,5 @@
 import { Router } from "express";
 import getUser from "../controllers/get.user";
-import userValidation from "../input-validations/get.user.schema";
 import login from "../controllers/login.user";
 import loginValidation from "../input-validations/login.user.schema";
 import registerUser from "../controllers/register.user";
@@ -11,7 +10,7 @@ import updateValidation from "../input-validations/update.user.schema";
 
 const userRouter = Router();
 
-userRouter.get("/", userValidation, getUser);
+userRouter.get("/", getUser);
 userRouter.post("/login", loginValidation, login);
 userRouter.post("/register",registerValidation, registerUser);
 userRouter.post("/logout", logout);
