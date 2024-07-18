@@ -10,7 +10,7 @@ const deleteSubTaskSchema = joi.object({
 
 const deleteSubTaskValidation = async(req: Request, res: Response, next: NextFunction) => {
     try {
-        await deleteSubTaskSchema.validateAsync(req.body);
+        await deleteSubTaskSchema.validateAsync(req.query);
         next();
     }
     catch (error) {
